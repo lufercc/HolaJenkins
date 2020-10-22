@@ -1,13 +1,23 @@
 pipeline {
  agent any
  tools {
-    gradle "tt"
+    gradle "gradle"
  }
  stages {
-    stage("configuration") {
+    stage("build") {
+         steps {
+             bat 'gradle --version'
+         }
+    }
+     stage("test") {
          steps {
              bat 'gradle uiTests'
          }
-    }
+     }
+     stage("deploy") {
+         steps {
+             echo "deploy application"
+         }
+     }
  }
 }
