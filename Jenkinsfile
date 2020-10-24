@@ -6,17 +6,13 @@ pipeline {
  stages {
     stage("build") {
          steps {
-             bat 'gradle --version'
+            bat 'docker build -t automation:1.0.0 .'
+            bat 'docker tag automation:1.0.0 automation:1.0.0'
          }
     }
      stage("test") {
          steps {
-             bat 'gradle uiTests'
-         }
-     }
-     stage("deploy") {
-         steps {
-             bat "deploy application"
+             bat 'docker-compose up automation'
          }
      }
  }
