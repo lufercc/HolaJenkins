@@ -1,7 +1,9 @@
 version: '3'
 services:
+  # Automation
   automation:
     container_name: automation
-    image: 'trello:1.0.0'
-      ports:
-        - 4040:7070
+    image: 'automation:1.0.0'
+    ports:
+      - 4040:7070
+
